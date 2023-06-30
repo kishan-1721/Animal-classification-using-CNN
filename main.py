@@ -20,7 +20,27 @@ class_name = ['cane', 'cavallo', 'elefante', 'farfalla', 'gallina', 'gatto', 'mu
 traslate = {"cane": "dog", "cavallo": "horse", "elefante": "elephant", "farfalla": "butterfly",
             "gallina": "chicken", "gatto": "cat", "mucca": "cow", "pecora": "sheep", "scoiattolo": "squirrel"}
 
-ImagePath = st.file_uploader("Choose a file")
+
+genre = st.radio(
+    "How You Want To Upload Your Image",
+    ('Browse Photos', 'Camera'))
+
+if genre == 'Camera':
+    ImagePath = st.camera_input("Take a picture")
+else:
+    ImagePath = st.file_uploader("Choose a file")
+
+# ImagePath = st.file_uploader("Choose a file")
+
+if ImagePath is not None:
+
+    try:
+        image_ = Image.open(ImagePath)
+
+        st.image(image_, width=250)
+
+    except UnidentifiedImageError:
+        st.write('Input Valid File Format !!!  [ jpeg, jpg, png only this format is supported ! ]')
 
 
 try:
