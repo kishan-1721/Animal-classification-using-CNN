@@ -3,6 +3,7 @@ from tensorflow.keras.models import Sequential, model_from_json
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import UnidentifiedImageError
+from PIL import Image
 
 
 
@@ -32,15 +33,15 @@ else:
 
 # ImagePath = st.file_uploader("Choose a file")
 
-# if ImagePath is not None:
+if ImagePath is not None:
 
-#     try:
-#         image_ = Image.open(ImagePath)
+    try:
+        image_ = Image.open(ImagePath)
 
-#         st.image(image_, width=250)
+        st.image(image_, width=250)
 
-#     except UnidentifiedImageError:
-#         st.write('Input Valid File Format !!!  [ jpeg, jpg, png only this format is supported ! ]')
+    except UnidentifiedImageError:
+        st.write('Input Valid File Format !!!  [ jpeg, jpg, png only this format is supported ! ]')
 
 
 try:
